@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <AssemblyName>WRSR Translation Editor</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\disk-pencil.png" />
+    <None Remove="Resources\disk.png" />
+    <None Remove="Resources\folder.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WRLang\WRLang.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\disk-pencil.png" />
+    <Resource Include="Resources\disk.png" />
+    <Resource Include="Resources\folder.png" />
+  </ItemGroup>
+
+</Project>
