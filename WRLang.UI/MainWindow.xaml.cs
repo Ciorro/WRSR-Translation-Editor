@@ -58,7 +58,18 @@ namespace WRLang.UI
 
             if (fileBrowser.ShowDialog() == true)
             {
-                Open(fileBrowser.FileName);
+                var mergeResult = _translations.Count > 0 ? MessageBox.Show(
+                    owner: this,
+                    messageBoxText: "Merge with the existing entries?",
+                    caption: "Merge",
+                    button: MessageBoxButton.YesNoCancel,
+                    icon: MessageBoxImage.Question
+                ) : MessageBoxResult.No;
+
+                if (mergeResult != MessageBoxResult.Cancel)
+                {
+                    Open(fileBrowser.FileName, mergeResult == MessageBoxResult.Yes);
+                }
             }
         }
 
@@ -85,13 +96,20 @@ namespace WRLang.UI
             e.CanExecute = !string.IsNullOrEmpty(CurrentFile);
         }
 
-        private void Open(string path)
+        private void Open(string path, bool merge = true)
         {
-            Translation[] translations;
+            Translation[] translations = [];
 
             try
             {
-                translations = BTF.LoadBtf(path);
+                if (merge)
+                {
+                    translations = BTF.LoadBtf(path).UnionBy(_translations, t => t.Id).ToArray();
+                }
+                else
+                {
+                    translations = BTF.LoadBtf(path);
+                }
             }
             catch (Exception e)
             {
@@ -99,10 +117,7 @@ namespace WRLang.UI
             }
 
             _translations.Clear();
-            foreach (var item in BTF.LoadBtf(path))
-            {
-                _translations.Add(item);
-            }
+            _translations.AddRange(translations);            
 
             CurrentFile = path;
         }
