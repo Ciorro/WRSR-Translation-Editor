@@ -1,5 +1,12 @@
 # Workers & Resources: Soviet Republic Translation Editor
+This program that lets you modify the translation files (`.btf`) of the game **Workers & Resources: Soviet Republic**.
 
-![test](screenshot.png)
+![W&R:SR Translator](screenshot.png)
 
-This program lets you edit the .btf translation files. These files are located in the media_soviet folder.
+## How to use
+- Run the executable.
+- Load an existing `.btf` file.
+- Edit the translations.
+- Save the modified `.btf` file.
+
+**Remember to make a backup of the file you want to edit.**
