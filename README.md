@@ -1,5 +1,5 @@
 # Workers & Resources: Soviet Republic Translation Editor
-This program that lets you modify the translation files (`.btf`) of the game **Workers & Resources: Soviet Republic**.
+This program lets you modify the translation files (`.btf`) of the game **Workers & Resources: Soviet Republic**.
 
 ![W&R:SR Translator](screenshot.png)
 
